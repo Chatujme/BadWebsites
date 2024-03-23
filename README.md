@@ -17,25 +17,24 @@ Získání seznamu zakázaných webů.
 
 Atribut `category` může nabývat následujících hodnot:
 
-- `junk news` - stránky s nekvalitními, zkreslenými nebo falešnými zprávami
-- `disinformation` - stránky šířící dezinformace
-- `conspiracy` - stránky propagující konspirační teorie
-- `violation` - stránky porušující zásady či pravidla
-- `health` - stránky s nespolehlivými informacemi o zdraví
-- `pro-kremlin` - prokremlínské stránky
-- `anti system` - stránky s protisystémovými postoji
-- `nwo` - stránky propagující teorii o Novém světovém řádu
-- `anti-islamic` - antiislámské stránky
-- `deep state` - stránky propagující teorii o "hlubokém státu"
-- `ezotheric` - ezoterické stránky
+- `junk news` - stránky s nekvalitními zprávami převážně tvořené PR (zaplacenými) články
+- `disinformation` - zprávy šířící dezinformace
+- `conspiracy` - zprávy propagující konspirační teorie
+- `health` - zprávy s nespolehlivými informacemi o zdraví
+- `pro-kremlin` - pro-kremelské zprávy
+- `anti system` - zprávy s protisystémovými postoji
+- `nwo` - zprávy propagující teorii o Novém světovém řádu
+- `anti-islamic` - antiislámské zprávy
+- `deep state` - zprávy propagující teorii o "hlubokém státu" / spiknutí
+- `ezotheric` - ezoterické zprávy
 - `aggregator` - agregátory obsahu bez vlastního originálního obsahu
-- `homophobic` - homofobní stránky
+- `homophobic` - homofobní zprávy
 - `hoax` - stránky šířící nepravdivé zprávy a hoax
-- `violence` - stránky podporující násilí
-- `biased` - zaujaté stránky
-- `historic conspiracy` - stránky s historickými konspiračními teoriemi
-- `anti-catholic` - anti-katolické stránky
-- `food` - stránky s problematickým nebo nespolehlivým obsahem o jídle
+- `violence` - zprávy podporující násilí a vulgaritu
+- `biased` - zaujaté zprávy
+- `historic conspiracy` - zprávy s historickými konspiračními teoriemi
+- `anti-catholic` - anti-katolické zprávy
+- `food` - zprávy s problematickým nebo nespolehlivým obsahem o jídle
 
 #### Response
 
