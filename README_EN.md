@@ -17,24 +17,24 @@ Retrieve a list of banned websites.
 
 The `category` attribute can take the following values:
 
-- `junk news` - websites with low-quality news mostly comprised of PR (paid) articles
-- `disinformation` - reports spreading disinformation
-- `conspiracy` - reports promoting conspiracy theories
-- `health` - reports with unreliable health information
-- `pro-kremlin` - pro-Kremlin reports
-- `anti system` - reports with anti-system stances
-- `nwo` - reports promoting the New World Order theory
-- `anti-islamic` - anti-Islamic reports
-- `deep state` - reports promoting the "deep state" conspiracy theory
-- `ezotheric` - esoteric reports
-- `aggregator` - content aggregators without original content
-- `homophobic` - homophobic reports
-- `hoax` - websites spreading false news and hoaxes
-- `violence` - reports supporting violence and vulgarity
-- `biased` - biased reports
-- `historic conspiracy` - reports with historical conspiracy theories
-- `anti-catholic` - anti-Catholic reports
-- `food` - reports with problematic or unreliable content about food
+- `junk news` - websites filled with low-quality news, often consisting of PR (paid) content
+- `disinformation` - news spreading disinformation
+- `conspiracy` - news advocating for conspiracy theories
+- `health` - news containing unreliable health information
+- `pro-kremlin` - news favoring the Kremlin's perspectives
+- `anti system` - news exhibiting anti-system views
+- `nwo` - news advocating the theory of the New World Order
+- `anti-islamic` - news with an anti-Islamic bias
+- `deep state` - news promoting deep state conspiracy theories
+- `ezotheric` - esoteric news
+- `aggregator` - platforms aggregating content without providing original material
+- `homophobic` - news displaying homophobic sentiment
+- `hoax` - websites disseminating false news and hoaxes
+- `violence` - news endorsing violence and vulgarity
+- `biased` - news that is partial or biased
+- `historic conspiracy` - news covering historical conspiracy theories
+- `anti-catholic` - news with an anti-Catholic stance
+- `food` - news featuring problematic or unreliable food-related content
 
 #### Response
 
