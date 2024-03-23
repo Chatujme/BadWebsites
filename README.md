@@ -11,7 +11,7 @@
 Získání seznamu sporných webů.
 
 **Metoda:** GET  
-**URL:** `<host>/bad-websites/list`
+**URL:** `https://api.chatujme.cz/bad-websites/list`
 
 #### Možné hodnoty pro `category`
 
