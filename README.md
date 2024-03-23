@@ -8,7 +8,7 @@
 
 ### GET /bad-websites/list
 
-Získání seznamu zakázaných webů.
+Získání seznamu sporných webů.
 
 **Metoda:** GET  
 **URL:** `<host>/bad-websites/list`
