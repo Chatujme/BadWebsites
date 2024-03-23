@@ -11,7 +11,7 @@
 Retrieve a list of questionable websites.
 
 **Method:** GET  
-**URL:** `<host>/bad-websites/list`
+**URL:** `https://api.chatujme.cz/bad-websites/list`
 
 #### Possible values for `category`
 
