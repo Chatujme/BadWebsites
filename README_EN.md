@@ -17,25 +17,24 @@ Retrieve a list of banned websites.
 
 The `category` attribute can take the following values:
 
-- `junk news` - sites with poor-quality, distorted, or fake news
-- `disinformation` - sites spreading disinformation
-- `conspiracy` - sites promoting conspiracy theories
-- `violation` - sites violating guidelines or rules
-- `health` - sites with unreliable health information
-- `pro-kremlin` - pro-Kremlin sites
-- `anti system` - sites with anti-system stances
-- `nwo` - sites promoting New World Order theories
-- `anti-islamic` - anti-Islamic sites
-- `deep state` - sites promoting the deep state theory
-- `ezotheric` - esoteric sites
+- `junk news` - websites with low-quality news mostly comprised of PR (paid) articles
+- `disinformation` - reports spreading disinformation
+- `conspiracy` - reports promoting conspiracy theories
+- `health` - reports with unreliable health information
+- `pro-kremlin` - pro-Kremlin reports
+- `anti system` - reports with anti-system stances
+- `nwo` - reports promoting the New World Order theory
+- `anti-islamic` - anti-Islamic reports
+- `deep state` - reports promoting the "deep state" conspiracy theory
+- `ezotheric` - esoteric reports
 - `aggregator` - content aggregators without original content
-- `homophobic` - homophobic sites
-- `hoax` - sites spreading false news and hoaxes
-- `violence` - sites supporting violence
-- `biased` - biased sites
-- `historic conspiracy` - sites with historical conspiracy theories
-- `anti-catholic` - anti-Catholic sites
-- `food` - sites with problematic or unreliable content about food
+- `homophobic` - homophobic reports
+- `hoax` - websites spreading false news and hoaxes
+- `violence` - reports supporting violence and vulgarity
+- `biased` - biased reports
+- `historic conspiracy` - reports with historical conspiracy theories
+- `anti-catholic` - anti-Catholic reports
+- `food` - reports with problematic or unreliable content about food
 
 #### Response
 
