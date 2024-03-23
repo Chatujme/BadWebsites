@@ -8,7 +8,7 @@
 
 ### GET /bad-websites/list
 
-Retrieve a list of banned websites.
+Retrieve a list of questionable websites.
 
 **Method:** GET  
 **URL:** `<host>/bad-websites/list`
