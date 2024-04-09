@@ -16,6 +16,9 @@ Získání seznamu sporných webů.
 **Metoda:** GET  
 **URL:** `https://api.chatujme.cz/bad-websites/list`
 
+`domain[]=<domain>` - Pole hodnot pro vyhledani konkretnich domen v seznamu\
+`fullUrl=1` - Volba pro rozsirene odpovedi o pole `source_link` obsahujici konkretni url zdroje
+
 #### Možné hodnoty pro `category`
 
 Atribut `category` může nabývat následujících hodnot:
