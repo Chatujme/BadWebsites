@@ -24,7 +24,7 @@ If you find any inaccuracies or missing data, we welcome your contributions. Ple
 
 Retrieve a list of contentious websites.
 
-**Method:** GET  
+**Method:** GET  \
 **URL:** `https://api.chatujme.cz/bad-websites/list`
 
 ##### Possible values for `category`
@@ -79,7 +79,7 @@ The `category` attribute can take the following values:
 #### POST /bad-websites/list
 Retrieve a list of contentious websites based on a filter in the request body.
 
-**Method:** POST
+**Method:** POST \
 **URL:** `https://api.chatujme.cz/bad-websites/list`
 
 #### Request JSON body
