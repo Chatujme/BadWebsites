@@ -7,7 +7,8 @@
 
 ## Obsah
 [GET /bad-websites/list](#get-bad-websiteslist)\
-[GET /bad-websites/detail](#get-bad-websitesdetailidid)
+[POST /bad-websites/list](#post-bad-websiteslist)
+
 
 ### GET /bad-websites/list
 
@@ -15,9 +16,6 @@ Získání seznamu sporných webů.
 
 **Metoda:** GET  
 **URL:** `https://api.chatujme.cz/bad-websites/list`
-
-`domain[]=<domain>` - Pole hodnot pro vyhledani konkretnich domen v seznamu\
-`fullUrl=1` - Volba pro rozsirene odpovedi o pole `source_link` obsahujici konkretni url zdroje
 
 #### Možné hodnoty pro `category`
 
@@ -49,13 +47,85 @@ Atribut `category` může nabývat následujících hodnot:
   {
     "id": 1,
     "domain": "example.com",
-    "source": ["www.nfnz.cz"],
-    "category": ["junk news"]
+    "source": ["www.example2.com"],
+    "category": ["junk news"],
+    "source_link": [
+      "https://www.example2.com/path"
+    ]
   },
   {
     "id": 2,
     "domain": "anotherexample.com",
     "source": ["www.nfnz.cz", "konspiratori.sk"],
     "category": ["conspiracy", "disinformation"]
+    "source_link": [
+      "https://konspiratori.sk/stranka/xxxx",
+      "https://www.nfnz.cz/konspiracni-server-xxxxx/"
+    ]
   }
 ]
+```
+
+### POST /bad-websites/list
+Získání seznamu sporných webů na zaklade filtru v body.
+#### Request JSON body
+
+```json
+{ "domains":
+  [
+    "https://ac24.cz",
+    "https://cz24.news/zbytocne-ludstvo-popredny-ekonom-varuje-ze-takmer-vsetky-ludske-profesie-nahradi-umela-inteligencia/"
+  ]
+}
+```
+
+#### Response JSON
+```json
+[
+    {
+        "id": 1418,
+        "domain": "cz24.news",
+        "source": [
+            "nelez.cz",
+            "konspiratori.sk",
+            "www.nfnz.cz"
+        ],
+        "category": [
+            "anti system",
+            "disinformation",
+            "health",
+            "deep state"
+        ],
+        "source_link": [
+            "https://nelez.cz/csv.php",
+            "https://konspiratori.sk/stranka/720",
+            "https://www.nfnz.cz/konspiracni-server-cz-24-news/"
+        ]
+    },
+    {
+        "id": 1345,
+        "domain": "ac24.cz",
+        "source": [
+            "nelez.cz",
+            "konspiratori.sk",
+            "www.nfnz.cz"
+        ],
+        "category": [
+            "anti system",
+            "conspiracy",
+            "nwo",
+            "pro-kremlin",
+            "health",
+            "deep state"
+        ],
+        "source_link": [
+            "https://nelez.cz/csv.php",
+            "https://konspiratori.sk/stranka/6",
+            "https://www.nfnz.cz/konspiracni-server-ac24/"
+        ]
+    }
+]
+```
+
+
+
