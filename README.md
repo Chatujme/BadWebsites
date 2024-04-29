@@ -1,4 +1,6 @@
 # BadWebsites
+[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 Veřejná API pro získání informací zda url se nenachází na nějakém z veřejných seznamů dezinformačních nebo jinak sporných webů. Primární ověřovací zdroje jsou [nfnz.cz](https://nfnz.cz), [konspiratori.sk](https://konspiratori.sk), [nelez.cz](https://nelez.cz), [manipulatori.cz](https://manipulatori.cz) a [investigace.cz](https://investigace.cz).\
 Weby jsou do API databáze přidány nejen na základě uvedených seznamů, ale také na základě sledování četnosti příspěvků veřejných diskuzí na platformě Chatujme.cz a následné analýzy zdrojů, včetně odkazů na Telegramové skupiny, jako je například neCT24 a další.
@@ -10,10 +12,6 @@ Uživatelé jsou povinni prověřit aktuálnost a správnost informací sami, a 
 
 ## Feel free PR
 Pokud naleznete nějakou nepřesnost nebo chybějící data, rádi je přijmeme. Prosím, přidejte požadované změny nebo doplňky pomocí pull requestů (PR).
-
-
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
 
 ## API Dokumentace
 
