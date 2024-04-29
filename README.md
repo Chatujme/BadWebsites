@@ -24,7 +24,7 @@ Pokud naleznete nějakou nepřesnost nebo chybějící data, rádi je přijmeme.
 
 Získání seznamu sporných webů.
 
-**Metoda:** GET  
+**Metoda:** GET  \
 **URL:** `https://api.chatujme.cz/bad-websites/list`
 
 #### Možné hodnoty pro `category`
@@ -78,6 +78,11 @@ Atribut `category` může nabývat následujících hodnot:
 
 ### POST /bad-websites/list
 Získání seznamu sporných webů na zaklade filtru v body.
+
+**Method:** POST \
+**URL:** `https://api.chatujme.cz/bad-websites/list`
+
+
 #### Request JSON body
 
 ```json
