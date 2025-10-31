@@ -42,4 +42,5 @@ jobs:
           git config --local user.name "github-actions[bot]"
           git add data/source.json
           git commit -m "Update badwebsites list"
+          git pull --rebase origin main
           git push
