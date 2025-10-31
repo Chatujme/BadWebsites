@@ -15,14 +15,16 @@ jobs:
 
       - name: Download latest data from API
         run: |
-          curl -s https://api.chatujme.cz/bad-websites/list > data/source.json
+          curl -s https://api.chatujme.cz/bad-websites/list > data/source.json.tmp
 
-      - name: Check if data is valid JSON
+      - name: Format JSON with jq
         run: |
-          if ! jq empty data/source.json 2>/dev/null; then
+          if ! jq '.' data/source.json.tmp > data/source.json 2>/dev/null; then
             echo "Error: Downloaded data is not valid JSON"
+            rm -f data/source.json.tmp
             exit 1
           fi
+          rm -f data/source.json.tmp
 
       - name: Check for changes
         id: changes
