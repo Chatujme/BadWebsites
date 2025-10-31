@@ -1,0 +1,43 @@
+name: Update BadWebsites List
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs daily at 2 AM UTC
+  workflow_dispatch:  # Allows manual trigger
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Download latest data from API
+        run: |
+          curl -s https://api.chatujme.cz/bad-websites/list > data/source.json
+
+      - name: Check if data is valid JSON
+        run: |
+          if ! jq empty data/source.json 2>/dev/null; then
+            echo "Error: Downloaded data is not valid JSON"
+            exit 1
+          fi
+
+      - name: Check for changes
+        id: changes
+        run: |
+          if git diff --quiet data/source.json; then
+            echo "changed=false" >> $GITHUB_OUTPUT
+          else
+            echo "changed=true" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Commit and push if changed
+        if: steps.changes.outputs.changed == 'true'
+        run: |
+          git config --local user.email "github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add data/source.json
+          git commit -m "Update badwebsites list"
+          git push
