@@ -1,145 +1,195 @@
-# BadWebsites
-[![Project Status: WIP – Initial development is in progress, but there has not yet been a stable, usable release suitable for the public.](https://www.repostatus.org/badges/latest/wip.svg)](https://www.repostatus.org/#wip)
-[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/dwyl/esta/issues)
+# BadWebsites API
 
-Public API for obtaining information on whether a URL is listed on any of the publicly available lists of disinformation or otherwise contentious websites. Primary verification sources include [nfnz.cz](https://nfnz.cz), [konspiratori.sk](https://konspiratori.sk), [nelez.cz](https://nelez.cz), [manipulatori.cz](https://manipulatori.cz), and [investigace.cz](https://investigace.cz).\
-Websites are added to the API database not only based on the aforementioned lists but also based on monitoring the frequency of posts in public discussions on the Chatujme.cz platform and subsequent source analysis, including links to Telegram groups, such as neCT24 and others.
-The source data used by the API can be found in [source.json](data/source.json).
+[![Project Status: Active](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+[![contributions welcome](https://img.shields.io/badge/contributions-welcome-brightgreen.svg?style=flat)](https://github.com/Chatujme/BadWebsites/issues)
+[![Daily Update](https://github.com/Chatujme/BadWebsites/actions/workflows/update-badwebsites.yml/badge.svg)](https://github.com/Chatujme/BadWebsites/actions/workflows/update-badwebsites.yml)
+
+[Czech version](README.md)
+
+Publicly available REST API database of disinformation, conspiracy and otherwise contentious websites in the Czech and Slovak space. The database currently contains **1 500+** domains.
+
+## Data Sources
+
+| Source | Type | Domains |
+|--------|------|---------|
+| [nfnz.cz](https://www.nfnz.cz) | Junk news, disinformation | ~1 230 |
+| [konspiratori.sk](https://konspiratori.sk) | Conspiracy, propaganda | ~316 |
+| [nelez.cz](https://nelez.cz) | Disinformation | ~51 |
+| [cs.wikipedia.org](https://cs.wikipedia.org/wiki/Seznam_dezinforma%C4%8Dn%C3%ADch_web%C5%AF_v_%C4%8De%C5%A1tin%C4%9B) | Disinformation website list | ~17 |
+| [hlidacipes.org](https://hlidacipes.org) | Investigative source | ~14 |
+| [manipulatori.cz](https://manipulatori.cz) | Fact-checking | ~4 |
+| [investigace.cz](https://www.investigace.cz) | Investigative source | ~3 |
+
+Websites are also added to the database based on monitoring the frequency of posts in public discussions on the [Chatujme.cz](https://chatujme.cz) platform and subsequent source analysis, including links to Telegram groups (e.g. neCT24).
+
+Source data: [`data/source.json`](data/source.json) (automatically updated daily)
 
 ## Disclaimer
-This API provides information in good faith and based on available data. We do not assume any responsibility for the accuracy, completeness, or timeliness of the provided data. \
-Users are required to verify the accuracy and correctness of the information themselves and to use it at their own risk. \
 
-## Feel free PR
-If you find any inaccuracies or missing data, we welcome your contributions. Please submit the desired changes or additions via pull requests (PR).
+This API provides information in good faith based on publicly available data. It assumes no responsibility for the accuracy, completeness, or timeliness of the data. Users are required to verify information themselves and use it at their own risk.
+
+---
 
 ## API Documentation
 
-### Index
-[GET /bad-websites/list](#get-bad-websiteslist)\
-[POST /bad-websites/list](#post-bad-websiteslist)
+**Base URL:** `https://api.chatujme.cz`
 
+### GET /bad-websites/list
 
-#### GET /bad-websites/list
+Returns the complete list of all contentious websites.
 
-Retrieve a list of contentious websites.
+```bash
+curl https://api.chatujme.cz/bad-websites/list
+```
 
-**Method:** GET  \
-**URL:** `https://api.chatujme.cz/bad-websites/list`
-
-##### Possible values for `category`
-
-The `category` attribute can take the following values:
-
-- `junk news` - websites filled with low-quality news, often consisting of PR (paid) content
-- `disinformation` - news spreading disinformation
-- `conspiracy` - news advocating for conspiracy theories
-- `health` - news containing unreliable health information
-- `pro-kremlin` - news favoring the Kremlin's perspectives
-- `anti system` - news exhibiting anti-system views
-- `nwo` - news advocating the theory of the New World Order
-- `anti-islamic` - news with an anti-Islamic bias
-- `deep state` - news promoting deep state conspiracy theories
-- `ezotheric` - esoteric news
-- `aggregator` - platforms aggregating content without providing original material
-- `homophobic` - news displaying homophobic sentiment
-- `hoax` - websites disseminating false news and hoaxes
-- `violence` - news endorsing violence and vulgarity
-- `biased` - news that is partial or biased
-- `historic conspiracy` - news covering historical conspiracy theories
-- `anti-catholic` - news with an anti-Catholic stance
-- `food` - news featuring problematic or unreliable content about food
-
-##### Response
+#### Response
 
 ```json
 [
   {
-    "id": 1,
-    "domain": "example.com",
-    "source": ["www.example2.com"],
-    "category": ["junk news"],
+    "id": 1345,
+    "domain": "ac24.cz",
+    "source": ["nelez.cz", "konspiratori.sk", "www.nfnz.cz"],
+    "category": ["anti system", "conspiracy", "nwo", "pro-kremlin"],
     "source_link": [
-      "https://www.example2.com/path"
-    ]
-  },
-  {
-    "id": 2,
-    "domain": "anotherexample.com",
-    "source": ["www.nfnz.cz", "konspiratori.sk"],
-    "category": ["conspiracy", "disinformation"]
-    "source_link": [
-      "https://konspiratori.sk/stranka/xxxx",
-      "https://www.nfnz.cz/konspiracni-server-xxxxx/"
+      "https://nelez.cz/csv.php",
+      "https://konspiratori.sk/stranka/6",
+      "https://www.nfnz.cz/konspiracni-server-ac24/"
     ]
   }
 ]
 ```
 
-#### POST /bad-websites/list
-Retrieve a list of contentious websites based on a filter in the request body.
+### POST /bad-websites/list
 
-**Method:** POST \
-**URL:** `https://api.chatujme.cz/bad-websites/list`
+Checks specific URLs/domains against the database. Accepts an array of URLs or domains and returns only found matches.
 
-#### Request JSON body
+```bash
+curl -X POST https://api.chatujme.cz/bad-websites/list \
+  -H "Content-Type: application/json" \
+  -d '{"domains": ["https://ac24.cz", "https://cz24.news/article"]}'
+```
+
+#### Request
 
 ```json
-{ "domains":
-  [
+{
+  "domains": [
     "https://ac24.cz",
-    "https://cz24.news/zbytocne-ludstvo-popredny-ekonom-varuje-ze-takmer-vsetky-ludske-profesie-nahradi-umela-inteligencia/"
+    "https://cz24.news/some-article-example"
   ]
 }
 ```
 
-##### Response JSON
+#### Response
+
 ```json
 [
-    {
-        "id": 1418,
-        "domain": "cz24.news",
-        "source": [
-            "nelez.cz",
-            "konspiratori.sk",
-            "www.nfnz.cz"
-        ],
-        "category": [
-            "anti system",
-            "disinformation",
-            "health",
-            "deep state"
-        ],
-        "source_link": [
-            "https://nelez.cz/csv.php",
-            "https://konspiratori.sk/stranka/720",
-            "https://www.nfnz.cz/konspiracni-server-cz-24-news/"
-        ]
-    },
-    {
-        "id": 1345,
-        "domain": "ac24.cz",
-        "source": [
-            "nelez.cz",
-            "konspiratori.sk",
-            "www.nfnz.cz"
-        ],
-        "category": [
-            "anti system",
-            "conspiracy",
-            "nwo",
-            "pro-kremlin",
-            "health",
-            "deep state"
-        ],
-        "source_link": [
-            "https://nelez.cz/csv.php",
-            "https://konspiratori.sk/stranka/6",
-            "https://www.nfnz.cz/konspiracni-server-ac24/"
-        ]
-    }
+  {
+    "id": 1418,
+    "domain": "cz24.news",
+    "source": ["nelez.cz", "konspiratori.sk", "www.nfnz.cz"],
+    "category": ["anti system", "disinformation", "health", "deep state"],
+    "source_link": [
+      "https://nelez.cz/csv.php",
+      "https://konspiratori.sk/stranka/720",
+      "https://www.nfnz.cz/konspiracni-server-cz-24-news/"
+    ]
+  },
+  {
+    "id": 1345,
+    "domain": "ac24.cz",
+    "source": ["nelez.cz", "konspiratori.sk", "www.nfnz.cz"],
+    "category": ["anti system", "conspiracy", "nwo", "pro-kremlin", "health", "deep state"],
+    "source_link": [
+      "https://nelez.cz/csv.php",
+      "https://konspiratori.sk/stranka/6",
+      "https://www.nfnz.cz/konspiracni-server-ac24/"
+    ]
+  }
 ]
 ```
 
+### Response Fields
 
+| Field | Type | Description |
+|-------|------|-------------|
+| `id` | number | Unique record identifier |
+| `domain` | string | Website domain |
+| `source` | string[] | List of sources that track the website |
+| `category` | string[] | Content categories of the website |
+| `source_link` | string[] | Direct links to the website's profiles at the sources |
 
+### Categories
+
+| Category | Description |
+|----------|-------------|
+| `junk news` | Websites with low-quality news, PR / paid content |
+| `disinformation` | Spreading disinformation |
+| `conspiracy` | Conspiracy theories |
+| `pro-kremlin` | Pro-Kremlin propaganda |
+| `anti system` | Anti-system attitudes |
+| `health` | Unreliable health content |
+| `anti-islamic` | Anti-Islamic content |
+| `deep state` | Deep state theories |
+| `nwo` | New World Order theories |
+| `ezotheric` | Esoteric content |
+| `aggregator` | Aggregator without original content |
+| `hoax` | Spreading hoaxes and false news |
+| `violence` | Promotion of violence |
+| `biased` | Biased content |
+| `homophobic` | Homophobic content |
+| `historic conspiracy` | Historical conspiracy theories |
+| `anti-catholic` | Anti-Catholic content |
+| `food` | Unreliable food-related content |
+
+---
+
+## Clients
+
+### TypeScript
+
+See [`client.ts`](client.ts) - typed client with full TypeScript support.
+
+```typescript
+import { BadWebsitesClient } from './client';
+
+const client = new BadWebsitesClient();
+
+// Complete list
+const all = await client.getAll();
+console.log(`Total ${all.length} domains`);
+
+// Check specific URL
+const results = await client.check([
+  'https://ac24.cz',
+  'https://cz24.news/article'
+]);
+
+for (const site of results) {
+  console.log(`${site.domain}: ${site.category.join(', ')}`);
+}
+
+// Filter by category
+const kremlin = await client.getByCategory('pro-kremlin');
+```
+
+### JavaScript (jQuery + Bootstrap 3)
+
+See [`simple_js_client.js`](simple_js_client.js) - inline warnings for links on a web page using popovers.
+
+---
+
+## Automatic Updates
+
+Data in `data/source.json` is updated daily at 02:00 UTC via [GitHub Actions](.github/workflows/update-badwebsites.yml).
+
+Manual update: `./update.sh`
+
+## Contributing
+
+PRs are welcome. For new domains, a source must be provided (link to profile at nfnz.cz, konspiratori.sk, etc.).
+
+## License
+
+MIT
